@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <title>Application Pompiers</title>
+  <link rel="stylesheet" href="CSS/normalize.css">
   <link rel="stylesheet" href="CSS/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script src="app.js" defer></script>
 </head>
 
 <body>
-
   <!-- BARRE LATÉRALE -->
   <div class="sidebar" id="sidebar">
     <div class="logo" onclick="goToHome()">
@@ -31,13 +31,66 @@
       <span class="bar"></span>
     </button>
 
+    <!-- SECTION ACCUEIL -->
     <div class="centered-content" id="accueil">
       <h1>Accueil</h1>
+
+      <form id="form-feu" class="input-section">
+        <div class="field">
+          <label for="input1">Surface en feu :</label>
+          <input type="text" id="input1" name="surface">
+        </div>
+        <div class="field">
+          <label for="input2">Diamètre de la source :</label>
+          <input type="text" id="input2" name="diametre">
+        </div>
+        <div class="field">
+          <label for="input3">Hauteur du feu :</label>
+          <input type="text" id="input3" name="hauteur">
+        </div>
+        <div class="field">
+          <label for="input4">Température ambiante :</label>
+          <input type="text" id="input4" name="temperature">
+        </div>
+        <div class="field">
+          <label for="input5">Stabilité atmosphérique :</label>
+          <input type="text" id="input5" name="stabilite">
+        </div>
+        <div class="field">
+          <label for="input6">Zone rurale ou urbaine :</label>
+          <input type="text" id="input6" name="zone">
+        </div>
+        <div class="field">
+          <label for="input7">Hauteur du capteur au sol :</label>
+          <input type="text" id="input7" name="capteur_hauteur">
+        </div>
+        <div class="field">
+          <label for="input8">Vitesse du vent :</label>
+          <input type="text" id="input8" name="vent">
+        </div>
+
+        <button type="button" id="confirm-all-inputs" class="btn btn-yellow">
+          Confirmer les entrées
+        </button>
+
+        <div class="btn-group">
+          <button type="button" id="start-acquisition" class="btn btn-red">
+            Commencer acquisition
+          </button>
+          <button type="button" id="stop-acquisition" class="btn btn-green">
+            Terminer acquisition
+          </button>
+        </div>
+      </form>
+
+      <p id="acquisition-status" class="statut">
+        Statut : Initialisation…
+      </p>
+      <p id="geolocation-status" class="statut-gps">
+        Statut GPS : Non démarré.
+      </p>
     </div>
-
-    <div id="contenu" style="display: none;"></div>
   </div>
-
 </body>
 
 </html>

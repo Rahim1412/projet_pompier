@@ -2,19 +2,27 @@
   --sidebar-width: 250px;
   --sidebar-bg: #b00000d0;
   --text-white: #fff;
+  --couleur-gris-clair: #ccc;
+  --couleur-jaune: #f0c419;
+  --police-corps: Arial, sans-serif;
+  --police-sstitre: Arial, sans-serif;
+  --taille-corps: 1rem;
+}
+
+/* Base & reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  overflow-x: hidden;
-  background-image: url("../image/caserne3.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  font-family: var(--police-corps);
+  line-height: 1.5;
+  background: url("../image/caserne3.png") center/cover fixed no-repeat;
   min-height: 100vh;
-  position: relative;
+  overflow-x: hidden;
+  color: white;
 }
 
 /* SIDEBAR */
@@ -25,19 +33,10 @@ body {
   width: var(--sidebar-width);
   height: 100%;
   background-color: var(--sidebar-bg);
-  color: var(--text-white);
   transform: translateX(-100%);
   transition: transform 0.3s ease;
   z-index: 1000;
-  border-radius: 10px 10px 10px 10px;
-  /* top-left, top-right, bottom-right, bottom-left */
-
-  /* ou plus explicite :
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-  */
-
-  /* pour que le contenu ne dépasse pas de l’arrondi : */
+  border-radius: 10px;
   overflow: hidden;
 }
 
@@ -54,43 +53,30 @@ body {
   width: 200px;
 }
 
-/* NAVIGATION */
 .nav {
   list-style: none;
-  padding: 0;
   margin-top: 20px;
 }
 
 .nav li {
   padding: 20px 30px;
-  font-size: 20px;
-  line-height: 1.5;
+  font-size: 1.1rem;
   display: flex;
   align-items: center;
   gap: 12px;
-  color: white;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.nav li i {
-  font-size: 22px;
+  transition: background-color 0.3s;
 }
 
 .nav li:hover {
   background-color: #726365;
-  border-radius: 5px 5px 5px 5px;
+  border-radius: 5px;
 }
 
-.nav li.active {
-  color: white;
-}
-
-/* CONTENU PRINCIPAL */
+/* MAIN CONTENT */
 .main-content {
-  transition: margin-left 0.3s ease;
   margin-left: 0;
-  color: white;
+  transition: margin-left 0.3s ease;
   position: relative;
 }
 
@@ -98,23 +84,7 @@ body {
   margin-left: var(--sidebar-width);
 }
 
-/* TEXTE CENTRÉ ACCUEIL */
-.centered-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  text-align: center;
-}
-
-.centered-content h1 {
-  font-size: 64px;
-  color: white;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
-  margin: 0;
-}
-
-/* BOUTON HAMBURGER */
+/* HAMBURGER */
 .hamburger {
   display: flex;
   flex-direction: column;
@@ -136,9 +106,163 @@ body {
   border-radius: 2px;
 }
 
-/* RESPONSIVE */
-@media screen and (min-width: 769px) {
-  .main-content.shifted {
-    margin-left: var(--sidebar-width);
+/* SECTION ACCUEIL */
+.centered-content {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Titre responsive */
+.centered-content h1 {
+  font-size: clamp(2rem, 8vw, 5rem);
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1rem;
+}
+
+/* Formulaire positionné en bas */
+.input-section {
+  margin-top: auto;
+  width: 50vw;
+  max-width: 1000px;
+  margin-inline: auto;
+}
+
+.field {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.field label {
+  min-width: 120px;
+  margin-right: 1rem;
+  text-align: right;
+  font-size: var(--taille-corps);
+}
+
+.field input {
+  flex-grow: 1;
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--couleur-gris-clair);
+  border-radius: 4px;
+}
+
+/* Boutons */
+.btn {
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: var(--taille-corps);
+  font-family: var(--police-sstitre);
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 0.5rem;
+}
+
+.btn-yellow {
+  background-color: var(--couleur-jaune);
+  color: #333;
+}
+
+.btn-red {
+  background-color: #e4342e;
+  color: #fff;
+}
+
+.btn-green {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+/* Statuts */
+.statut,
+.statut-gps {
+  font-size: var(--taille-corps);
+  margin: 0.5rem 0;
+}
+
+.statut-gps {
+  color: #ccc;
+}
+
+/* --- Agrandir sidebar et typo sur grand écran --- */
+@media screen and (min-width: 1200px) {
+
+  /* Sidebar plus large */
+  :root {
+    --sidebar-width: 300px;
   }
+
+  .sidebar {
+    width: var(--sidebar-width);
+  }
+
+  /* Logo plus gros */
+  .sidebar .logo img {
+    width: 250px;
+  }
+
+  /* Items de nav plus gros */
+  .nav li {
+    font-size: 1.4rem;
+    padding: 24px 36px;
+  }
+
+  /* Corps de page : texte plus gros */
+  body {
+    font-size: 1.15rem;
+  }
+
+  /* Formulaire : étiquettes et champs */
+  .field label {
+    font-size: 1.1rem;
+  }
+
+  .field input {
+    padding: 0.75rem;
+  }
+
+  /* Boutons plus imposants */
+  .btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+}
+
+/* 1) Étendre le background à tout l’arrière-plan */
+html {
+  height: 100%;
+  background: url("../image/caserne3.png") center/cover fixed no-repeat;
+  overscroll-behavior-y: none;
+  /* désactive le bounce vertical */
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  /* plus besoin de background ici, on l’a sur html */
+  /* background: none;  */
+  overscroll-behavior-y: none;
+  /* idem pour body si nécessaire */
+}
+
+/* 2) Assurer que le conteneur scrollable garde toujours son fond */
+.main-content {
+  position: relative;
+  /* si tu veux que seul le main-content défile et pas la barre latérale : */
+  height: 100vh;
+  overflow-y: auto;
+  /* background: transparent; (par défaut) */
+}
+
+/* Ton sidebar, qui reste fixe et pleine hauteur */
+.sidebar {
+  top: 0;
+  left: 0;
+  height: 100vh;
+  /* ...le reste de tes règles */
 }
