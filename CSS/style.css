@@ -29,6 +29,16 @@ body {
   transform: translateX(-100%);
   transition: transform 0.3s ease;
   z-index: 1000;
+  border-radius: 10px 10px 10px 10px;
+  /* top-left, top-right, bottom-right, bottom-left */
+
+  /* ou plus explicite :
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  */
+
+  /* pour que le contenu ne dépasse pas de l’arrondi : */
+  overflow: hidden;
 }
 
 .sidebar.active {
@@ -69,6 +79,7 @@ body {
 
 .nav li:hover {
   background-color: #726365;
+  border-radius: 5px 5px 5px 5px;
 }
 
 .nav li.active {
