@@ -1,6 +1,6 @@
 :root {
   --sidebar-width: 250px;
-  --sidebar-bg: #b00000;
+  --sidebar-bg: #b00000d0;
   --text-white: #fff;
 }
 
@@ -8,6 +8,13 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   overflow-x: hidden;
+  background-image: url("../image/caserne3.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+  position: relative;
 }
 
 /* SIDEBAR */
@@ -45,82 +52,82 @@ body {
 }
 
 .nav li {
-  padding: 15px 25px;
+  padding: 20px 30px;
+  font-size: 20px;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.nav li i {
+  font-size: 22px;
 }
 
 .nav li:hover {
-  background-color: #8a0000;
+  background-color: #726365;
+}
+
+.nav li.active {
+  color: white;
 }
 
 /* CONTENU PRINCIPAL */
 .main-content {
   transition: margin-left 0.3s ease;
-  padding: 20px;
   margin-left: 0;
+  color: white;
+  position: relative;
 }
 
 .main-content.shifted {
   margin-left: var(--sidebar-width);
 }
 
-/* BOUTON HAMBURGER */
-.hamburger {
-  font-size: 26px;
-  background: none;
-  border: none;
-  color: var(--sidebar-bg);
-  cursor: pointer;
-  margin-bottom: 20px;
+/* TEXTE CENTRÉ ACCUEIL */
+.centered-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
 }
 
-/* VIDÉO */
-video {
-  display: block;
-  margin: 20px auto;
-  max-width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+.centered-content h1 {
+  font-size: 64px;
+  color: white;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+  margin: 0;
+}
+
+/* BOUTON HAMBURGER */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 35px;
+  height: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 20px;
+  z-index: 1001;
+}
+
+.hamburger .bar {
+  height: 5px;
+  width: 100%;
+  background-color: var(--sidebar-bg);
+  border-radius: 2px;
 }
 
 /* RESPONSIVE */
 @media screen and (min-width: 769px) {
-
-  /* Ne pas forcer l'affichage de la sidebar */
-  /* Juste prévoir le décalage si elle est active */
   .main-content.shifted {
     margin-left: var(--sidebar-width);
   }
-}
-
-
-@media screen and (max-width: 768px) {
-  #toggleSidebar {
-    display: block;
-  }
-}
-
-body {
-  background-image: url("../image/caserne3.png");
-  /* mets ici le bon chemin */
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  margin: 0;
-  overflow-x: hidden;
-  min-height: 100vh;
-  position: relative;
-}
-
-#titre {
-  color: white;
-  font-size: 64px;
-  /* taille plus grande */
-  text-align: center;
-  margin-top: 20vh;
-  /* pousse vers le centre vertical */
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-  /* optionnel : pour lisibilité */
 }

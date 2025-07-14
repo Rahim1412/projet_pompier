@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Application Pompiers</title>
-  <link rel="stylesheet" href="CSS/normalize.css">
   <link rel="stylesheet" href="CSS/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script src="app.js" defer></script>
@@ -26,11 +25,17 @@
 
   <!-- CONTENU PRINCIPAL -->
   <div class="main-content" id="mainContent">
-    <button id="toggleSidebar" class="hamburger">☰</button>
-    <h1 id="titre">Accueil</h1>
-    <div id="contenu">
-      <!-- Le contenu dynamique ira ici -->
+    <button id="toggleSidebar" class="hamburger">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <div class="centered-content" id="accueil">
+      <h1>Accueil</h1>
     </div>
+
+    <div id="contenu" style="display: none;"></div>
   </div>
 
 </body>
